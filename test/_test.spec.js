@@ -5,6 +5,7 @@ let request = require('supertest');
 let app = require('../server');
 let mongoose = require('mongoose');
 let User = mongoose.model('User');
+let Chirp = mongoose.model('Chirp');
 
 before((done) => {
   let user = new User();
@@ -17,5 +18,7 @@ before((done) => {
 });
 
 after((done) => {
-  User.collection.remove(done);
+  User.collection.remove((err, res) => {
+    Chirp.collection.remove(done);
+  });
 });

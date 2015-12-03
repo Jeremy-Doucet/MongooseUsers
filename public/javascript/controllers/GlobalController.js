@@ -17,5 +17,7 @@
           $state.go('Home');
         });
       };
+
+      vm.logout = UserFactory.removeToken;
   }
 })();

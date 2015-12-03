@@ -16,7 +16,7 @@
 			<md-button ui-sref="Register">Register</md-button>
 		</div>
 		<div layout layout-align="center" ng-show="global.status._id">
-			<md-button ng-click="global.isLoggedIn = false;">Logout</md-button>
+			<md-button ng-click="global.logout()">Logout</md-button>
 		</div>
 	</md-toolbar>
 	<ui-view></ui-view>

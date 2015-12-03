@@ -6,7 +6,6 @@ let app = require('../server');
 let mongoose = require('mongoose');
 let User = mongoose.model('User');
 let Chirp = mongoose.model('Chirp');
-
 let validToken, badToken;
 
 describe('Chirp Routes', () => {

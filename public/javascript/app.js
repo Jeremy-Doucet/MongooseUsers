@@ -14,7 +14,7 @@
 		}).state('Register', {
 			url: '/register',
 			templateUrl: '/templates/register.html'
-		});
+		})
 		$urlRouterProvider.otherwise('/');
 
 	}
