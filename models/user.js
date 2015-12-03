@@ -1,6 +1,7 @@
 'use strict';
 let mongoose = require('mongoose');
 let bcrypt = require('bcrypt');
+let jwt = require('jsonwebtoken');
 
 let UserSchema = new mongoose.Schema({
   name: String,
@@ -34,6 +35,13 @@ UserSchema.methods.validatePassword = function(password, hash, cb) {
     if(err) return cb(err);
     cb(null, res); //res should be true or false
   });
+};
+
+UserSchema.methods.generateJWT = function() {
+  return jwt.sign({
+    _id: this._id,
+    email: this.local.email
+  }, "coder camps!");
 };
 
 module.exports = mongoose.model('User', UserSchema);

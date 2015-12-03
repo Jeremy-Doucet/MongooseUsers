@@ -15,7 +15,7 @@ router.post('/register', (req, res, next) => {
     user.save((err, result) => {
       if (err) return next(err);
       if (!result) return next(`could not create user`);
-      res.send(result);
+      res.send({ token: result.generateJWT() });
     });
   });
 });
@@ -23,7 +23,7 @@ router.post('/register', (req, res, next) => {
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', (err, user) => {
     if(err) return next(err);
-    res.send("Success!");
+    res.send({ token: user.generateJWT() });
   })(req, res, next);
 });
 

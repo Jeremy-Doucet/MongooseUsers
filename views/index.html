@@ -3,12 +3,22 @@
 <head>
 	<title>coder-camps-js</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
-	
+
+
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/site.css">
 </head>
-<body>
+<body ng-controller="GlobalController as global">
+	<md-toolbar layout>
+		<span flex></span>
+		<div layout layout-align="center" ng-show="!global.isLoggedIn">
+			<md-button ui-sref="Login">Login</md-button>
+			<md-button ui-sref="Register">Register</md-button>
+		</div>
+		<div layout layout-align="center" ng-show="global.isLoggedIn">
+			<md-button ng-click="global.isLoggedIn = false;">Logout</md-button>
+		</div>
+	</md-toolbar>
 	<ui-view></ui-view>
 	<!-- Ext Libs -->
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
@@ -18,6 +28,8 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.js"></script>
 	<script src="/javascript/app.js"></script>
 	<script src="/javascript/services/HomeFactory.js"></script>
+	<script src="/javascript/services/UserFactory.js"></script>
 	<script src="/javascript/controllers/HomeController.js"></script>
+	<script src="/javascript/controllers/GlobalController.js"></script>
 </body>
 </html>
