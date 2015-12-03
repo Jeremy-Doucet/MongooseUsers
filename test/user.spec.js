@@ -23,6 +23,13 @@ describe('User Routes', () => {
         done();
       });
     });
+    it('throw err - email exists', (done) => {
+      request(app)
+        .post('/api/v1/users/register')
+        .send({ email: 'test@fake.com', password: 'secret' })
+        .expect(500)
+        .end(done);
+    });
   }); // End of register
   describe('Login', () => {
     it('Should let me log in', (done) => {
@@ -30,6 +37,20 @@ describe('User Routes', () => {
         .post('/api/v1/users/login')
         .send({ email: 'test@fake.com', password: 'secret' })
         .expect(200)
+        .end(done);
+    });
+    it('throw error - email doesnt exist', (done) => {
+      request(app)
+        .post('/api/v1/users/login')
+        .send({ email: 'invalid@fake.com', password: 'secret' })
+        .expect(500)
+        .end(done);
+    });
+    it('throw error - password incorrect', (done) => {
+      request(app)
+        .post('/api/v1/users/login')
+        .send({ email: 'test@fake.com', password: 's3cr3t' })
+        .expect(500)
         .end(done);
     });
   });
