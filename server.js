@@ -6,6 +6,7 @@ let port = process.env.PORT || 3000;
 let passport = require('passport');
 let mongoose = require('mongoose');
 require('./models/user');
+require('./models/chirp');
 require('./config/passport');
 if(process.env.NODE_ENV === 'test') mongoose.connect('mongodb://localhost/userauth-test')
 else mongoose.connect('mongodb://localhost/userauth');
@@ -24,15 +25,17 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 
 let userRoutes = require('./routes/userRoutes');
+let chirpRoutes = require('./routes/chirpRoutes');
 
 app.get('/', function(req, res) {
 	res.render('index');
 });
 
 app.use('/api/v1/users/', userRoutes);
+app.use('/api/v1/chirps/', chirpRoutes);
 
 app.use((err, req, res) => {
-	console.log(err);
+	if(process.env.NODE_ENV !== "test") {console.log(err);}
 	res.status(500).send(err);
 });
 

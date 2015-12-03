@@ -15,7 +15,8 @@ let UserSchema = new mongoose.Schema({
       unique: true
     },
     password: String
-  }
+  },
+  chirps: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Chirp' }]
 });
 
 UserSchema.methods.CreateHash = function(password, cb) {

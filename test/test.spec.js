@@ -7,6 +7,12 @@ let mongoose = require('mongoose');
 let User = mongoose.model('User');
 
 before((done) => {
+  let user = new User();
+  user.local.email = "fake@email.com";
+  user.local.password = "secret";
+  user.name = "Fake Person";
+  user.primaryEmail = "fake@email.com";
+  user.save();
   done();
 });
 

@@ -42,7 +42,7 @@
       var token = JSON.parse(atob(o.getToken().split('.')[1]));
       o.status._id = token._id;
       o.status.email = token.email;
-    }
+    };
 
     if(o.getToken()) o.setUser();
 
