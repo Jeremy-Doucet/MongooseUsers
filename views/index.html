@@ -11,11 +11,11 @@
 <body ng-controller="GlobalController as global">
 	<md-toolbar layout>
 		<span flex></span>
-		<div layout layout-align="center" ng-show="!global.isLoggedIn">
+		<div layout layout-align="center" ng-show="!global.status._id">
 			<md-button ui-sref="Login">Login</md-button>
 			<md-button ui-sref="Register">Register</md-button>
 		</div>
-		<div layout layout-align="center" ng-show="global.isLoggedIn">
+		<div layout layout-align="center" ng-show="global.status._id">
 			<md-button ng-click="global.isLoggedIn = false;">Logout</md-button>
 		</div>
 	</md-toolbar>
