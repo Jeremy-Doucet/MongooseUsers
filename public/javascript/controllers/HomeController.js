@@ -7,9 +7,13 @@
 		var vm = this;
 		vm.title = 'Welcome to our App!';
 
+		HomeFactory.getAllChirps().then(function(res) {
+			vm.chirps = res;
+		});
+
 		vm.createChirp = function() {
 			HomeFactory.createChirp(vm.chirp).then(function(res) {
-				//vm.chirps.push(res);
+				vm.chirps.push(res);
 				vm.chirp = "";
 			});
 		};

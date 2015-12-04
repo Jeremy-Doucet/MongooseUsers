@@ -10,6 +10,16 @@ let auth = jwt({
   secret: 'coder camps!'
 });
 
+// GET /api/v1/chirps
+router.get('/', (req, res, next) => {
+  Chirp.find({})
+    .populate('createdBy', 'local.email')
+    .exec((err, result) => {
+      if(err) return next(err);
+      res.send(result);
+    });
+});
+
 // POST /api/v1/chirps
 router.post('/', auth, (req, res, next) => {
   // user ID is: req.payload._id
