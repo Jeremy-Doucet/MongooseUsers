@@ -14,6 +14,15 @@
 			return q.promise;
 		};
 
+		o.getMyChirps = function() {
+			var q = $q.defer();
+			$http.get('/api/v1/chirps/profile', { headers: { authorization: 'Bearer ' + $window.localStorage.getItem('token')}
+			}).then(function(res) {
+				q.resolve(res.data);
+			});
+			return q.promise;
+		};
+
 		o.createChirp = function(chirp) {
 			var chirp_obj = { message: chirp };
 			var q = $q.defer();

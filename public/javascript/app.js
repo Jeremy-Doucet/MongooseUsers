@@ -14,6 +14,10 @@
 		}).state('Register', {
 			url: '/register',
 			templateUrl: '/templates/register.html'
+		}).state('Profile', {
+			url: '/profile',
+			templateUrl: '/templates/profile.html',
+			controller: 'ProfileController as vm'
 		})
 		$urlRouterProvider.otherwise('/');
 

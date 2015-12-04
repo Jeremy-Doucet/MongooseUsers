@@ -20,6 +20,14 @@ router.get('/', (req, res, next) => {
     });
 });
 
+// GET /api/v1/chirps/profile
+router.get('/profile', auth, (req, res, next) => {
+  Chirp.find({ createdBy: req.payload._id }).exec((err, chirps) => {
+    if(err) return next(err);
+    res.send(chirps);
+  });
+});
+
 // POST /api/v1/chirps
 router.post('/', auth, (req, res, next) => {
   // user ID is: req.payload._id

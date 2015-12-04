@@ -16,6 +16,7 @@
 			<md-button ui-sref="Register">Register</md-button>
 		</div>
 		<div layout layout-align="center" ng-show="global.status._id">
+			<md-button ui-sref="Profile">Profile</md-button>
 			<md-button ng-click="global.logout()">Logout</md-button>
 		</div>
 	</md-toolbar>
@@ -31,5 +32,6 @@
 	<script src="/javascript/services/UserFactory.js"></script>
 	<script src="/javascript/controllers/HomeController.js"></script>
 	<script src="/javascript/controllers/GlobalController.js"></script>
+	<script src="/javascript/controllers/ProfileController.js"></script>
 </body>
 </html>
